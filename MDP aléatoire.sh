@@ -173,7 +173,8 @@ fi
 
 echo "Mot de passe : $mdp"
 
-if [[ $debug -eq 1 ]]; then
+# Mode debug
+{ if [[ $debug -eq 1 ]]; then
   debug
 
 elif [[ $1 == "debug" ]]; then
@@ -181,7 +182,7 @@ elif [[ $1 == "debug" ]]; then
 
 elif [[ $1 == "--debug"  ]]; then
   debug
-fi
+fi }
 
 
 echo -e "\n"
