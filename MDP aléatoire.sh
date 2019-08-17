@@ -190,7 +190,6 @@ echo "Attention apr√®s avoir appuyer sur une touche, le mot de passe sera effac√
 echo -e "\n"
 read -s -n1 -p "Merci d'appuyer sur une touche pour continuer..."; echo
 echo -e "\n"
-#sleep 20
 clear
 
 
