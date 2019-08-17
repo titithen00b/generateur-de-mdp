@@ -9,13 +9,20 @@ read -p 'Combien de caractères pour le mot de passe ? ' car
 
 {
   j=$car
-# echo $j
   somme=0
   maju=0
   spe=0
   exclu=0
   minu=0
+  debug=0
 }
+
+
+debug () {
+echo "Somme des variables $somme"
+echo "Nombre de caractères pour la fonction cut $j"
+}
+
 
 if [[ $chiff == "oui" ]]; then
 {
@@ -121,6 +128,10 @@ if [[ $somme -eq 11 ]]; then
   {
     mdp=$(curl -s "https://api.motdepasse.xyz/create/?include_special_characters&include_digits&password_length=$car&quantity=1" | cut -d , -f 1 | cut -c 2- | cut -c 15- | cut -c 1-"$j" )
   }
+{
+  mdp=$(curl -s "https://api.motdepasse.xyz/create/?include_special_characters&include_digits&password_length=$car&quantity=1" | cut -d , -f 1 | cut -c 2- | cut -c 15- | cut -c 1-"$j" )
+}
+
 fi
 
 if [[ $somme -eq 24 ]]; then
@@ -159,19 +170,20 @@ if [[ $somme -eq 18 ]]; then
   }
 fi
 
-# echo "$somme"
 
 echo "Mot de passe : $mdp"
 
-#if [[ -z $1 ]]; then
-#  mdp=$(curl -s "https://api.motdepasse.xyz/create/?include_lowercase&include_digits&include_uppercase&exclude_similar_characters&password_length=$car&quantity=1" | cut -d , -f 1 | cut -c 2- | cut -c 15- | cut -c 1-"$j" )
-#elif [[ $1 == "tout" ]]; then
-#  mdp=$(curl -s "https://api.motdepasse.xyz/create/?include_special_characters&include_lowercase&include_digits&include_uppercase&exclude_similar_characters&password_length=$car&quantity=1" | cut -d , -f 1 | cut -c 2- | cut -c 15- | cut -c 1-"$j" )
-#fi
-# cho $1
-# echo $0
-# mdp=$(curl -s "https://api.motdepasse.xyz/create/?include_lowercase&include_digits&include_uppercase&exclude_similar_characters&password_length=$car&quantity=1" | cut -d , -f 1 | cut -c 2- | cut -c 15- | cut -c 1-"$j" )
-#echo "Mot de passe : $mdp"
+if [[ $debug -eq 1 ]]; then
+  debug
+
+elif [[ $1 == "debug" ]]; then
+  debug
+
+elif [[ $1 == "--debug"  ]]; then
+  debug
+fi
+
+
 echo -e "\n"
 echo "Attention après avoir appuyer sur une touche, le mot de passe sera effacé. Merci de mémorisé/noter/copier le mot de passe avant d'appuyer sur une touche !"
 echo -e "\n"
