@@ -1,4 +1,4 @@
-# 🔐 generateur-de-mdp — Générateur de mot de passe Unix
+# 🔐 generateur-de-mdp - Générateur de mot de passe Unix
 
 ![Bash](https://img.shields.io/badge/Bash-5%2B-informational?style=for-the-badge)
 ![Linux](https://img.shields.io/badge/Linux-Unix-orange?style=for-the-badge)
